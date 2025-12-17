@@ -5,19 +5,19 @@ sourced from the **News API**.
 
 
 ## 🛠️ Technology Used
-| Flutter 3.24.3 | Dart 3.5.3 | Android SDK version 34 |
+|  Flutter 3.24.3  |  Dart 3.5.3  |  Android SDK version 34  |
 
 
 
 ## 📄 Partial Screenshots 
 ### 1. `Home Page` 
-
+![App Screenshot](https://github.com/dinaaalyh/news-apps/blob/main/assets/images/home-page.png?raw=true)
 
 ### 2. `Detail Page` 
-
+![App Screenshot](https://github.com/dinaaalyh/news-apps/blob/main/assets/images/detail-page.png?raw=true)
 
 ### 3. `Search` 
-
+![App Screenshot](https://github.com/dinaaalyh/news-apps/blob/main/assets/images/search.png?raw=true)
 
 
 
