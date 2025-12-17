@@ -47,8 +47,8 @@ class NewsCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
                 image,
-                width: 110,
-                height: 110,
+                width: 125,
+                height: 125,
                 fit: BoxFit.cover,
               ),
             ),
@@ -74,11 +74,20 @@ class NewsCard extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 22),
+                  const SizedBox(height: 4),
+                  Text(
+                    description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 11,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       const CircleAvatar(
-                        radius: 10,
+                        radius: 8,
                         backgroundColor: Colors.grey,
                       ),
                       const SizedBox(width: 6),
