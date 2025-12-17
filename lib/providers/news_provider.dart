@@ -9,6 +9,8 @@ class NewsProvider extends ChangeNotifier {
 
   bool isLoading = false;
   String errorMessage = '';
+
+  List<Article> _allArticles = [];
   List<Article> articles = [];
 
   Future<void> fetchNews() async {
@@ -17,12 +19,27 @@ class NewsProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      articles = await newsService.fetchBusinessNews();
+      _allArticles = await newsService.fetchBusinessNews();
+      articles = _allArticles;
     } catch (e) {
       errorMessage = 'News failed to load';
     }
 
     isLoading = false;
+    notifyListeners();
+  }
+
+  void searchByTitle(String query) {
+    final search = query.toLowerCase();
+
+    if (search.isEmpty) {
+      articles = _allArticles;
+    } else {
+      articles = _allArticles.where((article) {
+        return article.title.toLowerCase().contains(search);
+      }).toList();
+    }
+
     notifyListeners();
   }
 }

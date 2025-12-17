@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_apps/providers/news_provider.dart';
+import 'package:provider/provider.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({super.key});
@@ -8,6 +10,9 @@ class SearchField extends StatelessWidget {
     return SizedBox(
       height: 50,
       child: TextField(
+        onChanged: (value) {
+          context.read<NewsProvider>().searchByTitle(value);
+        },
         decoration: InputDecoration(
           hintText: 'Search',
           hintStyle: const TextStyle(
