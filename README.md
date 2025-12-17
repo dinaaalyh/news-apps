@@ -1,16 +1,54 @@
-# news_apps
+# Technical Test 📰 News App
 
-A new Flutter project.
+A Flutter mobile application that retrieves and displays articles 
+sourced from the **News API**.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## 🛠️ Technology Used
+| Flutter 3.24.3 | Dart 3.5.3 | Android SDK version 34 |
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📄 Partial Screenshots 
+### 1. `Home Page` 
+
+
+### 2. `Detail Page` 
+
+
+### 3. `Search` 
+
+
+
+
+## 🗳 Installation 
+
+Clone Repository
+
+```bash
+git clone https://github.com/dinaaalyh/news-app.git
+```
+
+Install dependencies
+
+```bash
+flutter pub get
+```
+
+🔑 API Key Configuration (Required)
+
+Cara mendapatkan API Key:
+1. Buka https://newsapi.org
+2. Daftar / Login
+3. Generate API Key
+
+📍 Masukkan API Key di file berikut
+```bash
+lib/utils/api_key.dart
+```
+
+Run Application
+
+```bash
+flutter run
+``` 
