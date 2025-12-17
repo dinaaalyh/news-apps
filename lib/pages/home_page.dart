@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_apps/providers/news_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:news_apps/widgets/category_chip.dart';
 import 'package:news_apps/widgets/news_card.dart';
 import 'package:news_apps/widgets/search_field.dart';
@@ -12,7 +14,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(() {
+      context.read<NewsProvider>().fetchNews();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final newsProvider = context.watch<NewsProvider>();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -85,23 +98,51 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 18),
             Expanded(
-              child: ListView(
-                children: const [
-                  NewsCard(
-                    image: 'https://picsum.photos/200',
-                    category: 'Sports',
-                    title: 'Title',
-                    author: 'McKindney',
-                    date: 'Feb 27, 2023',
-                  ),
-                  NewsCard(
-                    image: 'https://picsum.photos/201',
-                    category: 'Education',
-                    title: 'Title',
-                    author: 'Rosemary',
-                    date: 'Feb 28, 2023',
-                  ),
-                ],
+              child: Builder(
+                builder: (_) {
+                  if (newsProvider.isLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (newsProvider.errorMessage.isNotEmpty) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(newsProvider.errorMessage),
+                          const SizedBox(height: 12),
+                          ElevatedButton(
+                            onPressed: () {
+                              newsProvider.fetchNews();
+                            },
+                            child: const Text('Try Again'),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                  if (newsProvider.articles.isEmpty) {
+                    return const Center(
+                      child: Text('No news available'),
+                    );
+                  }
+                  return ListView.builder(
+                    itemCount: newsProvider.articles.length,
+                    itemBuilder: (context, index) {
+                      final article = newsProvider.articles[index];
+
+                      return NewsCard(
+                        image: article.imageUrl.isNotEmpty ? article.imageUrl : 'https://picsum.photos/200',
+                        category: 'Business',
+                        title: article.title,
+                        author: article.author ?? 'Unknown',
+                        date: article.publishedAt ?? '',
+                        description: article.description ?? '',
+                      );
+                    },
+                  );
+                },
               ),
             ),
           ],

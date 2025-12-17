@@ -7,6 +7,7 @@ class NewsCard extends StatelessWidget {
   final String title;
   final String author;
   final String date;
+  final String description;
 
   const NewsCard({
     super.key,
@@ -15,6 +16,7 @@ class NewsCard extends StatelessWidget {
     required this.title,
     required this.author,
     required this.date,
+    required this.description,
   });
 
   @override
@@ -31,6 +33,7 @@ class NewsCard extends StatelessWidget {
               category: category,
               author: author,
               date: date,
+              description: description,
             ),
           ),
         );
@@ -67,11 +70,11 @@ class NewsCard extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 34),
+                  const SizedBox(height: 22),
                   Row(
                     children: [
                       const CircleAvatar(
@@ -82,7 +85,7 @@ class NewsCard extends StatelessWidget {
                       Text(
                         '$author · $date',
                         style: const TextStyle(
-                          fontSize: 12,
+                          fontSize: 10,
                           color: Colors.grey,
                         ),
                       ),

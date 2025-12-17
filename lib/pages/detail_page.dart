@@ -6,6 +6,7 @@ class DetailPage extends StatelessWidget {
   final String category;
   final String author;
   final String date;
+  final String description;
 
   const DetailPage({
     super.key,
@@ -14,6 +15,7 @@ class DetailPage extends StatelessWidget {
     required this.category,
     required this.author,
     required this.date,
+    required this.description,
   });
 
   @override
@@ -66,12 +68,12 @@ class DetailPage extends StatelessWidget {
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 28,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 14),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -115,17 +117,11 @@ class DetailPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 14),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'There are at least six Indonesian startups that have the opportunity '
-                'to become the next unicorn. They have a valuation of more than '
-                'US\$ 500 billion or around Rp 7.2 trillion.\n\n'
-                'Unicorn is a term for startups with a valuation of over US\$ 1 '
-                'billion or around Rp. 14 trillion.\n\n'
-                'Meanwhile, the decacorn is more than US\$ 10 billion or Rp 140 '
-                'trillion.',
-                style: TextStyle(
+                description.isNotEmpty ? description : 'News description not available.',
+                style: const TextStyle(
                   fontSize: 15,
                   height: 1.5,
                   color: Colors.black87,
