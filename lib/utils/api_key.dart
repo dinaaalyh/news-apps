@@ -5,5 +5,5 @@
 /// =======================================================
 
 class ApiKey {
-  static const String apiKey = '';
+  static const String apiKey = 'ISI_API_KEY_DI_SINI';
 }
